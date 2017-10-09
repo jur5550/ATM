@@ -1,12 +1,12 @@
 public interface ATMState {
 
-    void insertCard(ATM atm);
+    void insertCard();
 
-    void ejectCard(ATM atm);
+    void ejectCard();
 
-    void insertPin(ATM atm);
+    void insertPin(int pinNumber);
 
-    void requestAmount(ATM atm);
+    void requestAmount(int withdrawAmount);
 
 }
 

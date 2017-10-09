@@ -10,14 +10,14 @@ public class HasPinState implements ATMState {
         atm = newATMMachine;
     }
 
-    public void insertCard(ATM atm) {
+    public void insertCard() {
 
 
         System.out.println("You already entered a card");
 
     }
 
-    public void ejectCard(ATM atm) {
+    public void ejectCard() {
 
         System.out.println("Your card is ejected");
 
@@ -25,32 +25,32 @@ public class HasPinState implements ATMState {
 
     }
 
-    public void requestAmount(ATM atm) {
+    public void requestAmount(int withdrawAmount) {
 
-        if (atm.getWithdrawalAmount() > atm.getAmount()) {
+        if (withdrawAmount > atm.getAmount()) {
 
             System.out.println("You don't have that much cash available");
 
             System.out.println("Your card is ejected");
 
-            atm.setState(atm.idleState);
+            atm.setState(atm.getIdleState());
 
 
         } else {
 
 
-            System.out.println(getWithdrawalAmount + " is provided by the machine");
-            atm.setAmount(atm.getAmount() - getWithdrawalAmount);
+            System.out.println(withdrawAmount + " is provided by the machine");
+            atm.setAmount(atm.getAmount() - withdrawAmount);
             System.out.println("Your card is ejected");
             atm.setState(atm.idleState);
 
             if (atm.getAmount() <= 0) {
-                atm.setState(atm.idleState);
+                atm.setState(atm.getIdleState());
             }
         }
     }
 
-    public void insertPin(ATM atm) {
+    public void insertPin(int pin) {
         System.out.println("You already entered a PIN");
     }
 

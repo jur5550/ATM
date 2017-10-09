@@ -7,18 +7,13 @@ public class Main {
 
         // create the context
         ATM atm = new ATM();
-        atm.setState(new IdleState());
-
-        System.out.println("Type a number for an event:");
-        System.out.println("1. Insert card");
-        System.out.println("2. Enter PIN code");
-        System.out.println("3. Enter amount");
-        System.out.println("4. I want my money honey");
-        System.out.println();
-
-        System.out.println("Insert your card");
-
-        // while loop
-
+        atm.setState(new IdleState(atm));
+        atm.insertCard();
+        atm.ejectCard();
+        atm.insertCard();
+        atm.insertPin(0000);
+        atm.requestAmount(50);
+        atm.insertCard();
+        atm.insertPin(1111);
     }
 }

@@ -6,28 +6,28 @@ public class IdleState implements ATMState {
         this.atm = newATMMachine;
     }
     @Override
-    public void insertCard(ATM atm) {
+    public void insertCard() {
 
             System.out.println("Please enter your pin");
 
-                atm.setState(atm.hasCardState);
+                atm.setState(atm.getCardInsertedState());
 
         }
 
 
 
     @Override
-    public void ejectCard(ATM atm) {
-
+    public void ejectCard() {
+        System.out.println("Enter your card.");
     }
 
     @Override
-    public void insertPin(ATM atm) {
-
+    public void insertPin(int pin) {
+        System.out.println("Enter your card.");
     }
 
     @Override
-    public void requestAmount(ATM atm) {
-
+    public void requestAmount(int withdrawAmount) {
+        System.out.println("Enter your card.");
     }
 }

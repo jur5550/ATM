@@ -4,10 +4,11 @@ public class ATM
     ATMState idleState;
     ATMState hasCardState;
     ATMState hasCorrectPinState;
-    ATMState noCashState;
+    ATMState noCashinATMState;
 
     private ATMState state;
     private int amount = 100;
+    boolean correctPin = false;
 
     // define an initial state
     public ATM() {
@@ -15,9 +16,14 @@ public class ATM
         hasCardState = new HasCardState(this);
         idleState = new IdleState(this);
         hasCorrectPinState = new HasPinState(this);
-        noCashState = new NoCashState(this);
+        noCashinATMState = new NoCashState(this);
 
-        //setState(new IdleState());
+        setState(idleState);
+
+        if(amount < 0)
+        {
+            setState(noCashinATMState);
+        }
     }
 
     void setState(ATMState state) {
@@ -29,16 +35,16 @@ public class ATM
     }
 
     void insertCard() {
-        state.insertCard(this);
+        state.insertCard();
     }
     void ejectCard() {
-        state.ejectCard(this);
+        state.ejectCard();
     }
-    void insertPin() {
-        state.insertPin(this);
+    void insertPin(int pin) {
+        state.insertPin(pin);
     }
-    void requestAmount() {
-        state.requestAmount(this);
+    void requestAmount(int withdrawAmount) {
+        state.requestAmount(withdrawAmount );
     }
 
     public int getAmount()
@@ -50,4 +56,9 @@ public class ATM
         amount = newAmount;
 
     }
+
+    public ATMState getCardInsertedState() {return hasCardState;}
+    public ATMState getIdleState() {return idleState;}
+    public ATMState getHasCorrectPinState() {return hasCorrectPinState;}
+    public ATMState getNoCashinATMState() {return noCashinATMState;}
 }
