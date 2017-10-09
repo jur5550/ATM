@@ -1,5 +1,5 @@
 // the context
-public class ATM
+public class ATM implements AbstractATM
 {
     ATMState idleState;
     ATMState hasCardState;
@@ -26,7 +26,7 @@ public class ATM
         }
     }
 
-    void setState(ATMState state) {
+    public void setState(ATMState state) {
         this.state = state;
     }
 
@@ -34,16 +34,16 @@ public class ATM
         return this.state;
     }
 
-    void insertCard() {
+    public void insertCard() {
         state.insertCard();
     }
-    void ejectCard() {
+    public void ejectCard() {
         state.ejectCard();
     }
-    void insertPin(int pin) {
+    public void insertPin(int pin) {
         state.insertPin(pin);
     }
-    void requestAmount(int withdrawAmount) {
+    public void requestAmount(int withdrawAmount) {
         state.requestAmount(withdrawAmount );
     }
 

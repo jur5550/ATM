@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         // create the context
-        ATM atm = new ATM();
-        atm.setState(new IdleState(atm));
+        AbstractATM atm = new ProxyATM();
+        atm.setState(atm.getIdleState());
         atm.insertCard();
         atm.ejectCard();
         atm.insertCard();
